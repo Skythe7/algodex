@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block title %} Algodex | Post Algorithm {% endblock %}
+
+{% block body %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Post">
+    </form>
+{% endblock %}

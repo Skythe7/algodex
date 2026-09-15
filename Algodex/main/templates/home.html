@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %} Algodex | Home {% endblock %}
+
+{% block body %}
+    {% if request.user.is_authenticated %}
+        {{ request.user.username }}
+        <a href="{% url 'create' %}">Post new algorithm</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Join Algodex</a>
+    {% endif %}
+
+    <div>
+        <p>Search for certain algorithms</p>
+        <a href="/">All</a>
+        <a href="?category=F2L">F2L</a>
+        <a href="?category=OLL">OLL</a>
+        <a href="?category=PLL">PLL</a>
+    </div>
+
+    {% if algorithms %}
+
+        <div>
+            {% for algorithm in algorithms %}
+                <div>
+                    <a href="{% url 'page' algorithm.id %}">
+                    <h2>{{ algorithm.name }}</h2>
+                    <p>{{ algorithm.category }}</p>
+                    <p>It works!: {{ algorithm.yes_count }}</p>
+                    <p>It's fake!: {{ algorithm.no_count }}</p>
+                    <p>{{ algorithm.created_at|timesince }} ago</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endif %}
+{% endblock %}

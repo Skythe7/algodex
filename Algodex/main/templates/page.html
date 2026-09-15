@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block title %} Algodex | {{ algorithm.name }} {% endblock %}
+
+{% block body %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <h1>{{ algorithm.name }}</h1>
+    <p>Posted by: {{ algorithm.creator }}</p>
+    <h3>{{ algorithm.moves }}</h3>
+
+    {% if algorithm.yes_count or algorithm.no_count %}
+        {% if algorithm.yes_count > algorithm.no_count %}
+            <p>{{ algorithm.yes_count }} people claimed this algorithm is working</p>
+        {% else %}
+            <p>{{ algorithm.no_count }} people claimed this algorithm does not works</p>
+        {% endif %}
+    {% else %}
+        <p>No one has verify this algorithm yet. Be the first to verify!</p>
+    {% endif %}
+
+    {% if not request.user in algorithm.voters.all and request.user != algorithm.creator %}
+        <a href="{% url 'voting' 'yes' algorithm.id %}">It's working</a>
+        <a href="{% url 'voting' 'no' algorithm.id %}">It's not working</a>
+    {% endif %}
+
+    <h3><a href="{% url 'practice' algorithm.id %}">Practice this algorithm</a></h3>
+
+    <p>It works!: {{ algorithm.yes_count }}</p>
+    <p>It's fake!: {{ algorithm.no_count }}</p>
+
+    <p>{{ algorithm.created_at|timesince }} ago</p>
+{% endblock %}
