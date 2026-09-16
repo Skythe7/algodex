@@ -6,12 +6,19 @@
     <h1>{{ user.username }}</h1>
 
     <div>
-        <h2>{{ user.username }}'s Solves</h2>
-        {% for solve in solves %}
-            <h3>{{ solve.time|floatformat:2 }}</h3>
-            <p>{{ solve.algorithm }}</p>
-            <p>{{ solve.timestamp }}</p>
-        {% endfor %}
+        {% if solves %}
+            <h2>{{ user.username }}'s Solves</h2>
+
+            <h3>Best: <span>{{ stats.best }}</span></h3>
+            <h3>Average: <span>{{ stats.average }}</span></h3>
+            <h3>Count: <span>{{ stats.count }}</span></h3>
+
+            {% for solve in solves %}
+                <h3>{{ solve.time|floatformat:2 }}</h3>
+                <p>{{ solve.algorithm }}</p>
+                <p>{{ solve.timestamp }}</p>
+            {% endfor %}
+        {% endif %}
     </div>
 
 {% endblock %}

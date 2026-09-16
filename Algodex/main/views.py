@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 import json
 from django.http import JsonResponse
+from django.db.models import Avg, Min, Count
 
 # Algorithms library
 
@@ -148,8 +149,10 @@ def save_solve(request):
 def profile_page(request, id):
     user = User.objects.get(id=id)
     solves = models.Solve.objects.filter(user=user)
+    stats = solves.aggregate(best=Min("time"), average=Avg("time"), count=Count("id"))
 
     return render(request, 'profile.html', {
         "user": user,
         "solves": solves,
+        "stats": stats,
     })
