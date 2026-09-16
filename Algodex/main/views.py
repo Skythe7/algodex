@@ -32,8 +32,12 @@ def algorithm_page(request, id):
 
 
 def practice_page(request, id):
+    algorithm = models.Algorithm.objects.get(id=id)
+    solves = models.Solve.objects.filter(user=request.user, algorithm=algorithm)
+
     return render(request, 'practice.html', {
-        "algorithm": models.Algorithm.objects.get(id=id),
+        "algorithm": algorithm,
+        "solves": solves,
     })
 
 

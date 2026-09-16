@@ -11,7 +11,7 @@
         </ul>
     {% endif %}
     <h1>{{ algorithm.name }}</h1>
-    <p>Posted by: {{ algorithm.creator }}</p>
+    <p>Posted by: <a href="{% url 'profile' algorithm.creator.id %}">{{ algorithm.creator }}</a></p>
     <h3>{{ algorithm.moves }}</h3>
 
     {% if algorithm.yes_count or algorithm.no_count %}

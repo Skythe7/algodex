@@ -21,5 +21,16 @@
         <button id="timer-btn">Start</button>
     </div>
 
+    <div>
+        <h1>Your {{ algorithm.name }} solves</h1>
+
+        {% if solves %}
+            {% for solve in solves %}
+                <h3>{{ solve.time|floatformat:2 }}</h3>
+                <p>{{ solve.timestamp|timesince }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+
     <script src="{% static 'scripts/timer.js' %}"></script>
 {% endblock %}
