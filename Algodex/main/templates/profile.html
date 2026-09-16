@@ -9,6 +9,7 @@
         <h2>{{ user.username }}'s Solves</h2>
         {% for solve in solves %}
             <h5>{{ solve.time|floatformat:2 }}</h5>
+            <p>{{ solve.algorithm }}</p>
             <p>{{ solve.timestamp }}</p>
         {% endfor %}
     </div>

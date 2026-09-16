@@ -8,7 +8,7 @@
     {% csrf_token %}
     <div>
         <h1 id="algorithm-title">{{ algorithm.name }} Practice</h1>
-        <h1 id="timer">
+        <h1 id="timer" data-algorithm-id="{{ algorithm.id }}">
             <span id="minute">00</span>:<span id="second">00</span>:<span id="milisecond">00</span>
         </h1>
         <p>Hit space or press the button bellow to start/stop the timer</p>

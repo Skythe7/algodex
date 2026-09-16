@@ -4,6 +4,9 @@ const minute_el = document.querySelector('#minute');
 const second_el = document.querySelector('#second');
 const milisecond_el = document.querySelector('#milisecond');
 
+const timer_el = document.querySelector("#timer");
+const algorithm_id = timer_el.dataset.algorithmId;
+
 let minute = 0;
 let second = 0;
 let milisecond = 0;
@@ -33,7 +36,8 @@ timer_btn.addEventListener('click', () => {
                 "X-CSRFToken": csrfToken
             },
             body: JSON.stringify({
-                time: solve_time
+                time: solve_time,
+                id: algorithm_id
             })
         });
     }

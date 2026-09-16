@@ -25,6 +25,7 @@ class Algorithm(models.Model):
 class Solve(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     time = models.FloatField()
+    algorithm = models.ForeignKey(Algorithm, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

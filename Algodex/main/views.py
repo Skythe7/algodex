@@ -132,8 +132,9 @@ def voting(request, status, id):
 def save_solve(request):
     if request.method == "POST":
         data = json.loads(request.body)
+        algorithm = models.Algorithm.objects.get(id=data["id"])
 
-        models.Solve.objects.create(user=request.user, time=data["time"])
+        models.Solve.objects.create(user=request.user, time=data["time"], algorithm=algorithm)
 
         return JsonResponse({"success": True})
 
