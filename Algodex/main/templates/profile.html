@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %} Algodex | {{ user.username }} {% endblock %}
+
+{% block body %}
+    <h1>{{ user.username }}</h1>
+
+    <div>
+        <h2>{{ user.username }}'s Solves</h2>
+        {% for solve in solves %}
+            <h5>{{ solve.time|floatformat:2 }}</h5>
+            <p>{{ solve.timestamp }}</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

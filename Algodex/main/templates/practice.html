@@ -6,18 +6,20 @@
 
 {% block body %}
     {% csrf_token %}
-    <h1 id="algorithm-title">{{ algorithm.name }} Practice</h1>
-    <h1 id="timer">
-        <span id="minute">00</span>:<span id="second">00</span>:<span id="milisecond">00</span>
-    </h1>
-    <p>Hit space or press the button bellow to start/stop the timer</p>
+    <div>
+        <h1 id="algorithm-title">{{ algorithm.name }} Practice</h1>
+        <h1 id="timer">
+            <span id="minute">00</span>:<span id="second">00</span>:<span id="milisecond">00</span>
+        </h1>
+        <p>Hit space or press the button bellow to start/stop the timer</p>
 
-    {% if not request.user.is_authenticated %}
-        <p>WARNING: Since you are not signed in yet, your progress will not be saved.</p>
-        <a href="{% url 'login' %}">Sign in</a>
-    {% endif %}
+        {% if not request.user.is_authenticated %}
+            <p>WARNING: Since you are not signed in yet, your progress will not be saved.</p>
+            <a href="{% url 'login' %}">Sign in</a>
+        {% endif %}
 
-    <button id="timer-btn">Start</button>
+        <button id="timer-btn">Start</button>
+    </div>
 
     <script src="{% static 'scripts/timer.js' %}"></script>
 {% endblock %}

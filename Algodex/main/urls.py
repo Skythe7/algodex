@@ -13,5 +13,7 @@ urlpatterns = [
 
     path('voting/<str:status>/<int:id>', views.voting, name="voting"),
 
-    path('solve/', views.save_solve, name="save-solve")
+    path('solve/', views.save_solve, name="save-solve"),
+
+    path('profile/<str:id>', views.profile_page, name="profile"),
 ]

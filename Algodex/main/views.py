@@ -24,8 +24,10 @@ def home(request):
 
 
 def algorithm_page(request, id):
+    algorithm = models.Algorithm.objects.get(id=id)
+
     return render(request, 'page.html', {
-        'algorithm': models.Algorithm.objects.get(id=id),
+        'algorithm': algorithm,
     })
 
 
@@ -131,11 +133,18 @@ def save_solve(request):
     if request.method == "POST":
         data = json.loads(request.body)
 
-        models.Solve.objects.create(
-            user=request.user,
-            time=data["time"]
-        )
+        models.Solve.objects.create(user=request.user, time=data["time"])
 
         return JsonResponse({"success": True})
 
     return JsonResponse({"error": "POST required"}, status=405)
+
+
+def profile_page(request, id):
+    user = User.objects.get(id=id)
+    solves = models.Solve.objects.filter(user=user)
+
+    return render(request, 'profile.html', {
+        "user": user,
+        "solves": solves,
+    })
