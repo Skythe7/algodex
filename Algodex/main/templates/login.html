@@ -1,6 +1,10 @@
 {% extends 'layout.html' %}
 
+{% load static %}
+
 {% block title %} Algodex | Login {% endblock %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'styles/form.css' %}"> {% endblock %}
 
 {% block body %}
     {% if messages %}
@@ -13,10 +17,9 @@
 
     <form action="" method="post">
         {% csrf_token %}
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" value="Login">
+        <input type="text" class="field-input" name="username" placeholder="Username">
+        <input type="password" class="field-input" name="password" placeholder="Password">
+        <p>Don't have an account yet? <a href="{% url 'register' %}">Create new account!</a></p>
+        <input type="submit" id="submit-btn" value="Login">
     </form>
-
-    <p>Don't have an account yet? <a href="{% url 'register' %}">Create new account!</a></p>
 {% endblock %}
