@@ -7,20 +7,16 @@
 {% block css %} <link rel="stylesheet" href="{% static 'styles/form.css' %}"> {% endblock %}
 
 {% block body %}
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="text" class="field-input" name="username" placeholder="Username">
-        <input type="password" class="field-input" name="password" placeholder="Password">
-        <input type="password" class="field-input" name="confirm-password" placeholder="Confirm Password">
-        <p>Already have an account? <a href="{% url 'login' %}">Login!</a></p>
-        <input type="submit" id="submit-btn" value="Register">
-    </form>
+    <div class="main">
+        <div class="wrapper">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="text" class="field-input" name="username" placeholder="Username">
+                <input type="password" class="field-input" name="password" placeholder="Password">
+                <input type="password" class="field-input" name="confirm-password" placeholder="Confirm Password">
+                <p>Already have an account? <a href="{% url 'login' %}">Login!</a></p>
+                <input type="submit" id="submit-btn" value="Register">
+            </form>
+        </div>
+    </div>
 {% endblock %}

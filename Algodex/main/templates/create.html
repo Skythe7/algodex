@@ -8,16 +8,20 @@
 {% block css %} <link rel="stylesheet" href="{% static 'styles/form.css' %}"> {% endblock %}
 
 {% block body %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <p class="label-field">Name</p>
-        {% render_field form.name placeholder="Algorithm name" class+="field-input" %}
-        <p class="label-field">Category</p>
-        {% render_field form.category class+="field-choice" %}
-        <p class="label-field">Moves</p>
-        {% render_field form.moves placeholder="Moves" class+="field-input" %}
-        <p class="label-field">Description</p>
-        {% render_field form.description placeholder="Description" class+="field-text" %}
-        <input type="submit" value="Post" id="submit-btn">
-    </form>
+    <div class="main">
+        <div class="wrapper">
+            <form action="" method="post">
+                {% csrf_token %}
+                <p class="label-field">Name</p>
+                {% render_field form.name placeholder="Algorithm name" class+="field-input" %}
+                <p class="label-field">Category</p>
+                {% render_field form.category class+="field-choice" %}
+                <p class="label-field">Moves</p>
+                {% render_field form.moves placeholder="Moves" class+="field-input" %}
+                <p class="label-field">Description</p>
+                {% render_field form.description placeholder="Description" class+="field-text" %}
+                <input type="submit" value="Post" id="submit-btn">
+            </form>
+        </div>
+    </div>
 {% endblock %}

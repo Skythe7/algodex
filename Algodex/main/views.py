@@ -72,6 +72,9 @@ def register_page(request):
         password = request.POST["password"]
         confirm_password = request.POST["confirm-password"]
 
+        if not username or not password:
+            messages.error(request, "Please input username or password!")
+            return redirect('/register')
         if password != confirm_password:
             messages.error(request, "Password and confirm password must be the same!")
             return redirect('/register')

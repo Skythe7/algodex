@@ -14,11 +14,41 @@
 
 body {
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--background);
     flex-direction: column;
+}
+
+html, body {
+    height: 100%;
+}
+.main {
+    height: 100%;
+    display: table;
+}
+.wrapper {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.messages {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.messages div {
+    color: var(--background);
+    background-color: #de3636;
+    border: solid var(--background) 3px;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 500;
 }
 
 form {
