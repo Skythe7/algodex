@@ -20,6 +20,7 @@
                 <a class="category-name navbar-item" href="?category=OLL">OLL</a>
                 <a class="category-name navbar-item" href="?category=PLL">PLL</a>
                 <a class="navbar-item" href="{% url 'create' %}">Post new algorithm</a>
+                <a href="{% url 'profile' request.user.id %}" class="navbar-item">Profile</a>
                 <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
             </div>
         </div>
