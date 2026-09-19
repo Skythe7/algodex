@@ -2,34 +2,42 @@
 
 {% load static %}
 
+{% block css %} <link rel="stylesheet" href="{% static 'styles/practice.css' %}"> {% endblock %}
+
 {% block title %} Algodex | {{ algorithm.name }} (Practice) {% endblock %}
 
 {% block body %}
     {% csrf_token %}
-    <div>
-        <h1 id="algorithm-title">{{ algorithm.name }} Practice</h1>
-        <h1 id="timer" data-algorithm-id="{{ algorithm.id }}">
-            <span id="minute">00</span>:<span id="second">00</span>:<span id="milisecond">00</span>
-        </h1>
-        <p>Hit space or press the button bellow to start/stop the timer</p>
+    <div class="container">
+        <div class="algorithm-container">
+            <h1 id="algorithm-title">{{ algorithm.name }} Practice</h1>
+            <h1 id="timer" data-algorithm-id="{{ algorithm.id }}">
+                <span id="minute">00</span>:<span id="second">00</span>:<span id="milisecond">00</span>
+            </h1>
 
-        {% if not request.user.is_authenticated %}
-            <p>WARNING: Since you are not signed in yet, your progress will not be saved.</p>
-            <a href="{% url 'login' %}">Sign in</a>
-        {% endif %}
+            {% if not request.user.is_authenticated %}
+                <p>WARNING: Since you are not signed in yet, your progress will not be saved.</p>
+                <a href="{% url 'login' %}">Sign in</a>
+            {% endif %}
 
-        <button id="timer-btn">Start</button>
-    </div>
+            <button id="timer-btn">Start</button>
 
-    <div>
-        <h1>Your {{ algorithm.name }} solves</h1>
+            <p id="info">Hit the button bellow to start/stop the timer</p>
+        </div>
 
-        {% if solves %}
-            {% for solve in solves %}
-                <h3>{{ solve.time|floatformat:2 }}</h3>
-                <p>{{ solve.timestamp|timesince }}</p>
-            {% endfor %}
-        {% endif %}
+        <div class="solve-container">
+            <h1 class="title">Your {{ algorithm.name }} solves</h1>
+            <a class="refresh" href="{% url 'practice' algorithm.id %}">Refresh page</a>
+
+            {% if solves %}
+                {% for solve in solves %}
+                    <div class="solve">
+                        <h3 class="time">{{ solve.time|floatformat:2 }}</h3>
+                        <p class="timestamp">{{ solve.timestamp|timesince }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
 
     <script src="{% static 'scripts/timer.js' %}"></script>
