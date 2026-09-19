@@ -16,8 +16,8 @@
             </h1>
 
             {% if not request.user.is_authenticated %}
-                <p>WARNING: Since you are not signed in yet, your progress will not be saved.</p>
-                <a href="{% url 'login' %}">Sign in</a>
+                <p class="warning">WARNING: Since you are not signed in yet, your progress will not be saved.</p>
+                <a class="signin-btn" href="{% url 'login' %}">Sign in</a>
             {% endif %}
 
             <button id="timer-btn">Start</button>
@@ -25,19 +25,21 @@
             <p id="info">Hit the button bellow to start/stop the timer</p>
         </div>
 
-        <div class="solve-container">
-            <h1 class="title">Your {{ algorithm.name }} solves</h1>
-            <a class="refresh" href="{% url 'practice' algorithm.id %}">Refresh page</a>
+        {% if request.user.is_authenticated %}
+            <div class="solve-container">
+                <h1 class="title">Your {{ algorithm.name }} solves</h1>
+                <a class="refresh" href="{% url 'practice' algorithm.id %}">Refresh page</a>
 
-            {% if solves %}
-                {% for solve in solves %}
-                    <div class="solve">
-                        <h3 class="time">{{ solve.time|floatformat:2 }}</h3>
-                        <p class="timestamp">{{ solve.timestamp|timesince }}</p>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
+                {% if solves %}
+                    {% for solve in solves %}
+                        <div class="solve">
+                            <h3 class="time">{{ solve.time|floatformat:2 }}</h3>
+                            <p class="timestamp">{{ solve.timestamp|timesince }}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endif %}
     </div>
 
     <script src="{% static 'scripts/timer.js' %}"></script>

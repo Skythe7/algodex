@@ -84,6 +84,21 @@ html, body {
     font-size: 24px;
 }
 
+.warning {
+    color: var(--secondary);
+    font-weight: bold;
+    font-style: italic;
+}
+
+.signin-btn {
+    color: var(--secondary);
+    display: block;
+    font-style: italic;
+    text-decoration: underline;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
 @media screen and (max-width: 720px) {
     .container {
         flex-direction: column;

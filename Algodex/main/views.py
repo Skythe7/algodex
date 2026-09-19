@@ -34,7 +34,10 @@ def algorithm_page(request, id):
 
 def practice_page(request, id):
     algorithm = models.Algorithm.objects.get(id=id)
-    solves = models.Solve.objects.filter(user=request.user, algorithm=algorithm)
+    if not request.user.is_authenticated:
+        solves = None
+    else:
+        solves = models.Solve.objects.filter(user=request.user, algorithm=algorithm)
 
     return render(request, 'practice.html', {
         "algorithm": algorithm,
@@ -84,6 +87,7 @@ def register_page(request):
 
         user = User.objects.create_user(username=username, password=password)
         user.save()
+        redirect('/')
     
     return render(request, 'register.html')
 
