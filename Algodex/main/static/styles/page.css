@@ -1,0 +1,121 @@
+:root {
+    --background: #37323E;
+    --primary: #DEB841;
+    --secondary: #DE9E36;
+    --text: #e0dde2;
+    --middle: #6D6A75;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    margin: 5%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+}
+
+.title {
+    font-size: 48px;
+    color: var(--primary);
+    text-align: center;
+    margin: 8px;
+}
+
+.post-creator {
+    text-align: center;
+    color: var(--secondary);
+    margin: 8px;
+}
+.post-creator a {
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.moves {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--primary);
+    border: var(--primary) 3px solid;
+    padding: 12px;
+    display: inline-block;
+    text-align: center;
+    margin: 16px;
+    border-radius: 24px;
+}
+
+.verify-info {
+    font-size: 20px;
+    font-style: italic;
+    margin: 12px;
+}
+
+.vote-btns {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.vote-btn {
+    margin: 0px 8px;
+    color: var(--secondary);
+    font-size: 18px;
+    font-weight: bold;
+    border: var(--secondary) 2px solid;
+    padding: 8px;
+    border-radius: 12px;
+}
+.vote-btn:hover {
+    background-color: var(--secondary);
+    color: var(--background);
+    transition: all 0.15s;
+}
+
+.practice-btn {
+    margin: 32px 24px;
+    border: 3px solid var(--primary);
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 24px;
+    color: var(--primary);
+    font-weight: bold;
+}
+.practice-btn:hover {
+    background-color: var(--primary);
+    color: var(--background);
+    transition: all 0.15s;
+}
+
+.vote-counts {
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    font-size: 18px;
+    margin: 8px 0px;
+    font-weight: bold;
+}
+
+.vote-count {
+    margin: 0px 8px;
+}
+
+.timestamp {
+    font-style: italic;
+}
