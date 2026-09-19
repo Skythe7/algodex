@@ -1,24 +1,36 @@
 {% extends 'layout.html' %}
 
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'styles/profile.css' %}"> {% endblock %}
+
 {% block title %} Algodex | {{ user.username }} {% endblock %}
 
 {% block body %}
-    <h1>{{ user.username }}</h1>
+    <div class="container">
+        <h1 class="username">{{ user.username|title }}</h1>
 
-    <div>
-        {% if solves %}
-            <h2>{{ user.username }}'s Solves</h2>
+        <div>
+            <h2 class="solve-title">{{ user.username|title }}'s Solves</h2>
+            {% if solves %}
+                <div class="stats">
+                    <h3 class="stat">Best: <span>{{ stats.best }}</span></h3>
+                    <h3 class="stat">Average: <span>{{ stats.average|floatformat:2 }}</span></h3>
+                    <h3 class="stat">Count: <span>{{ stats.count }}</span></h3>
+                </div>
 
-            <h3>Best: <span>{{ stats.best }}</span></h3>
-            <h3>Average: <span>{{ stats.average }}</span></h3>
-            <h3>Count: <span>{{ stats.count }}</span></h3>
-
-            {% for solve in solves %}
-                <h3>{{ solve.time|floatformat:2 }}</h3>
-                <p>{{ solve.algorithm }}</p>
-                <p>{{ solve.timestamp }}</p>
-            {% endfor %}
-        {% endif %}
+                <div class="solve-container">
+                    {% for solve in solves %}
+                        <div class="solve">
+                            <h3>{{ solve.time|floatformat:2 }}</h3>
+                            <p>{{ solve.algorithm }}</p>
+                            <p>{{ solve.timestamp }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="info">It looks like this user hasn't solve any algorithms yet.</p>
+            {% endif %}
+        </div>
     </div>
-
 {% endblock %}
