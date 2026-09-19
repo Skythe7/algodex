@@ -39,6 +39,7 @@
         </div>
     {% endif %}
 
+    <h1 class="home-title">Algorithms</h1>
     {% if algorithms %}
         <div class="algorithms-container">
             {% for algorithm in algorithms %}
@@ -50,6 +51,7 @@
                             <p class="algorithm-yes">Works: {{ algorithm.yes_count }}</p>
                             <p class="algorithm-no">Fake: {{ algorithm.no_count }}</p>
                         </div>
+                        <p class="algorithm-timestamp">Posted by: {{ algorithm.creator }}</p>
                         <p class="algorithm-timestamp">{{ algorithm.created_at|timesince }} ago</p>
                     </a>
                 </div>
