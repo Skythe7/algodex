@@ -19,8 +19,6 @@ The website uses a freemium business model such that any user who accesses it as
 
 ### What Makes Algodex Distinctive
 
-Algodex stands apart from typical CS50 Web projects in several meaningful ways:
-
 **1. Domain-Specific Problem Solving:** Algodex focuses on a particular and enthusiastic group of users—speedcubers who solve Rubik's cubes—and addresses a real problem they encounter: the fragmentation of algorithms. These cubers usually come across algorithms in YouTube videos, on Reddit forums, or in various notation documents. Algodex brings this knowledge together in a single platform that allows searching, voting, and practice. This is not a general-purpose social app; it has been specifically designed for a defined user group with particular requirements.
 
 **2. Dual-Mode User Architecture:** Algodex enables users to explore and practice anonymously, thus reducing the barriers they face when first using the system, while at the same time encouraging them to create an account by keeping a record of the problems they have solved. Achieving this effect demanded careful conditional logic throughout the code and considered UX design—not an easy task.
@@ -112,11 +110,6 @@ In summary, Algodex is **not** a generic CRUD app reskinned for a different doma
 ---
 
 ## How to Run Your Application
-### Prerequisites
-- **asgiref**==3.12.1
-- **Django**==6.1.1
-- **django-widget-tweaks**==1.5.1
-- **sqlparse**==0.6.0
 
 ### Setup Instructions
 
